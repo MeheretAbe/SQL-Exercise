@@ -19,7 +19,7 @@ order by 1,2
 
 --looking at total cases vs population 
 --shows what percentage of the population got covid
-select location, date, population, total_cases, (total_cases/Nullif( population, 0))*100 as PercentPpopulationInfected
+select location, date, population, total_cases, (total_cases/Nullif( population, 0))*100 as PercentPopulationInfected
 from PortfolioProject..CovidDeaths
 where location like '%states%'
 order by 1,2
@@ -30,7 +30,7 @@ select location, population, max(total_cases)as highestInfectioncount, max ((tot
 from PortfolioProject..CovidDeaths
 --where location like '%states%'
 group by location, population
-order by PercentPpopulationInfected desc
+order by PercentPopulationInfected desc
 
 
 --showing countries with highest death count per population 
