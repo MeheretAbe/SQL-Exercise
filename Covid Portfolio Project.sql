@@ -26,7 +26,7 @@ order by 1,2
 
 
 --looking at countries with highest infection rate compared to population 
-select location, population, max(total_cases)as highestInfectioncount, max ((total_cases/Nullif( population, 0)))*100 as PercentPpopulationInfected
+select location, population, max(total_cases)as highestInfectioncount, max ((total_cases/Nullif( population, 0)))*100 as PercentPopulationInfected
 from PortfolioProject..CovidDeaths
 --where location like '%states%'
 group by location, population
