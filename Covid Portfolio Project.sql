@@ -42,10 +42,15 @@ group by location
 order by TotalDeathCount desc
 
 
-DELETE FROM PortfolioProject..CovidDeaths
-WHERE Location= 'world' or location ='High income' or location ='Upper middle income'
-or location ='Europe' or location= 'Asia' or location= 'North America' or location= 'South America'
-or location ='South America' or location= 'Lower middle income' or location= 'European union'
+
+select location, date, population, max(total_cases)as highestInfectioncount, max ((total_cases/Nullif( population, 0)))*100 as PercentpopulationInfected
+from PortfolioProject..CovidDeaths
+--where location like '%states%'
+group by location, population, date
+order by PercentPopulationInfected desc
+
+
+
 
 
 --showing the continents with the highest death count per population
