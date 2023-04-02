@@ -49,11 +49,14 @@ or location ='South America' or location= 'Lower middle income' or location= 'Eu
 
 
 --showing the continents with the highest death count per population
-dea.location,
---where location like '%states%'
-where continent  is not null
-group by continent 
+Select SUM(cast(new_deaths as int)) as TotalDeathCount, continent
+From PortfolioProject..CovidDeaths
+--Where location like '%states%'
+Where continent is not null 
+and location not in ('World', 'European Union', 'International', 'High income', 'Upper middle income', 'Lower middle income', 'Low income')
+Group by continent 
 order by TotalDeathCount desc
+
 
 
 -- Global numbers
@@ -76,6 +79,7 @@ and dea.date= vac.date
 order by 2,3
 
 
+
 --USE CTE
 with popvsVac( continent, location, date, population,new_vaccinations, RollingPeoplevaccinated)
 as
@@ -90,6 +94,8 @@ and dea.date= vac.date
 
 select *, ( RollingPeoplevaccinated/population)*100
 from popvsVac
+
+
 
 
 -- TEMP Table
