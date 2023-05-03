@@ -1,12 +1,4 @@
-select *
-from PortfolioProject.. CovidDeaths 
-where continent is not null
-order by 3,4
-
-select location, date, total_cases, new_cases, 
-total_deaths, population 
-from PortfolioProject.. CovidDeaths
-order by 3,4
+Covid death
 
 
 -- looking at total case vs total deaths
@@ -36,7 +28,6 @@ order by PercentPopulationInfected desc
 --showing countries with highest death count per population 
 select location, max(total_deaths)as TotalDeathCount
 from PortfolioProject..CovidDeaths
---where location like '%states%'
 where continent  is not null
 group by location
 order by TotalDeathCount desc
@@ -45,7 +36,6 @@ order by TotalDeathCount desc
 
 select location, date, population, max(total_cases)as highestInfectioncount, max ((total_cases/Nullif( population, 0)))*100 as PercentpopulationInfected
 from PortfolioProject..CovidDeaths
---where location like '%states%'
 group by location, population, date
 order by PercentPopulationInfected desc
 
@@ -56,7 +46,6 @@ order by PercentPopulationInfected desc
 --showing the continents with the highest death count per population
 Select SUM(cast(new_deaths as int)) as TotalDeathCount, continent
 From PortfolioProject..CovidDeaths
---Where location like '%states%'
 Where continent is not null 
 and location not in ('World', 'European Union', 'International', 'High income', 'Upper middle income', 'Lower middle income', 'Low income')
 Group by continent 
@@ -67,7 +56,6 @@ order by TotalDeathCount desc
 -- Global numbers
 select SUM(new_cases)as total_cases, SUM(new_deaths) as total_deaths, SUM(new_deaths)/sum(Nullif(new_cases, 0))*100 as DeathPercentage
 from PortfolioProject..CovidDeaths
---where location like '%states%'
 where continent  is not null
 --group by date
 order by 1,2
