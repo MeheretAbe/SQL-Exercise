@@ -1,4 +1,4 @@
--- Retrieve summarized data using aggregate functions. 
+-- Retroeving summarized data using aggregate functions. 
 
 SELECT c.Country, c.city,
 	COUNT(o.OrderId) '#  of Orders', 
