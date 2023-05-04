@@ -1,0 +1,16 @@
+-- Look in to total amount, average unit price, max and min and sum of quantity of order items to retrieve summarized data. 
+
+SELECT c.Country, c.city,
+	COUNT(o.OrderId) '#  of Orders', 
+	FORMAT(SUM(o.TotalAmount), 'C') 'Total  Amount', 
+	FORMAT(AVG(i.UnitPrice), 'C') 'Average  Price', 
+	FORMAT(MIN(i.UnitPrice), 'N') 'Lowest  Priced Item', 
+	FORMAT(MAX(i.UnitPrice), 'C') 'Highest  Priced Item', 
+	SUM(i.Quantity) 'Total  Items Purchased'
+FROM Customer c
+JOIN CustomerOrder o
+ON c.CustId = o.CustomerId
+JOIN OrderItem i
+ON o.OrderId = i.OrderId
+	GROUP BY  c.Country, c.city
+	ORDER BY c.Country
