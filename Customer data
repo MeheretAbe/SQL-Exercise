@@ -1,4 +1,4 @@
--- Look in to total amount, average unit price, max and min and sum of quantity of order items to retrieve summarized data. 
+-- Retrieve summarized data using aggregate functions. 
 
 SELECT c.Country, c.city,
 	COUNT(o.OrderId) '#  of Orders', 
