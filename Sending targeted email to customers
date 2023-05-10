@@ -17,7 +17,7 @@ from CustDemoDalton
 
 --Create a view for profile data on customers who live in Florida who have ordered for themselves using their primary address to send targeted email
 
-CREATE VIEW CustPrimaryAddress_FL AS
+CREATE OR ALTER VIEW CustPrimaryAddress_FL AS
 SELECT Customers.FirstName, Customers.Lastname,
 	ShippingInfo.StreetAddress, ShippingInfo.City,
 	ShippingInfo.State, ShippingInfo.Zipcode
