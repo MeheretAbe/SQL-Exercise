@@ -1,4 +1,3 @@
-Covid death
 
 
 -- looking at total case vs total deaths
