@@ -1,4 +1,4 @@
--- Retroeving summarized data using aggregate functions. 
+-- Retrieving summarized data using aggregate functions. 
 
 SELECT c.Country, c.city,
 	COUNT(o.OrderId) '#  of Orders', 
@@ -12,5 +12,5 @@ JOIN CustomerOrder o
 ON c.CustId = o.CustomerId
 JOIN OrderItem i
 ON o.OrderId = i.OrderId
-	GROUP BY  c.Country, c.city
-	ORDER BY c.Country
+GROUP BY  c.Country, c.city
+ORDER BY c.Country
