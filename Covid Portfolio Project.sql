@@ -1,4 +1,5 @@
---These queries analyze various aspects of COVID-19 data, such as death percentages, population infection rates, vaccination rates, and population percentages. They provide insights into the impact and response to the COVID-19 pandemic.
+--These queries analyze various aspects of COVID-19 data, such as death percentages, population infection rates, vaccination rates, and population percentages.
+This provides insight into the impact and response to the COVID-19 pandemic.
 
 -- 1. Total Death Percentage by Location and Date in USA
 select location, date, total_cases, total_deaths,(total_deaths/Nullif( total_cases,0))*100 as DeathPercentage
