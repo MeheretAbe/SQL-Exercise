@@ -1,4 +1,6 @@
---Create a view for profile data on customers who live in Dalton to send targeted email
+--This query aims to create or alter a view that provides a consolidated and filtered view of customer demographics specifically for customers from Dalton and Florida
+
+--1. Create a view for profile data on customers who live in Dalton to send targeted email
 
 
 CREATE OR ALTER VIEW CustDemoDalton AS
@@ -15,7 +17,7 @@ select *
 from CustDemoDalton
 
 
---Create a view for profile data on customers who live in Florida who have ordered for themselves using their primary address to send targeted email
+--2. Create a view for profile data on customers who live in Florida who have ordered for themselves using their primary address to send targeted email
 
 CREATE OR ALTER VIEW CustPrimaryAddress_FL AS
 SELECT Customers.FirstName, Customers.Lastname,
