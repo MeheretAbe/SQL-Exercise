@@ -1,4 +1,4 @@
--- Retrieving summarized data using aggregate functions. 
+-- The goal of this query is to query is to generate a report on customer orders and purchase statistics. 
 
 SELECT c.Country, c.city,
 	COUNT(o.OrderId) '#  of Orders', 
