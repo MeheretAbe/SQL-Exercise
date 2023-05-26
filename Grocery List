@@ -1,4 +1,6 @@
---Create a grocery store database
+--The purpose of the query is to create a table to store information about items in a store
+
+-- 1. Create a grocery store database
 
 CREATE TABLE store (id INTEGER PRIMARY KEY, item TEXT, section TEXT, price INTEGER, popularity INTEGER);
 
@@ -18,16 +20,16 @@ INSERT INTO store VALUES (13, 'vitamin D', 'health', 8.99,29);
 INSERT INTO store VALUES (14, 'nutritional yeast', 'health', 2.99, 26);
 INSERT INTO store VALUES (15, 'popcorn', 'snacks', 1.99, 47);
 
---display the database ordered by price. 
+--2. display the database ordered by price. 
 SELECT * FROM store
 ORDER BY price desc; 
 
---what is the avg price of items in the bulk section? 
+--3. what is the avg price of items in the bulk section? 
 SELECT AVG(price) "avg bulk item price"
 FROM store
 where section like 'bulk'; 
 
---what are the most 5 popular items? 
+--4. what are the most 5 popular items? 
 SELECT top 5 item, price, popularity
 FROM store
 order by popularity desc 
