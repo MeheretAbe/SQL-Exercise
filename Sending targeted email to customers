@@ -13,9 +13,6 @@ JOIN Demographics
 ON Customers.CustomerId = Demographics.CustDemoID
 WHERE Customers.City = 'Dalton'
 
-select *
-from CustDemoDalton
-
 
 --2. Create a view for profile data on customers who live in Florida who have ordered for themselves using their primary address to send targeted email
 
@@ -28,5 +25,4 @@ JOIN ShippingInfo
 ON Customers.CustomerID = ShippingInfo.CustID
 WHERE ShippingInfo.PrimaryAdd = 'Y' AND State = 'FL'
 
-select *
-from CustPrimaryAddress_FL
+
