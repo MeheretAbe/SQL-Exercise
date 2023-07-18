@@ -1,19 +1,19 @@
 -- The purpose of this query is to quantify statistics about customer and order data.
 
---How many orders were placed in January? 
+--1. How many orders were placed in January? 
 SELECT count(orderID)
 FROM BIT_DB.JanSales
 WHERE length(orderID)= 6
 AND orderID<>'Order ID';
 
---How many of those orders were for an iPhone?
+--2. How many of those orders were for an iPhone?
 
 SELECT count(orderID)
 FROM BIT_DB.JanSales 
 WHERE length(orderID)= 6
 AND orderID<> 'Order ID';
 
---Select the customer account numbers for all the orders that were placed in February.
+--3. Select the customer account numbers for all the orders that were placed in February.
 SELECT distinct(cus.acctnum)
 FROM BIT_DB.FebSales feb
 join bit_DB.customers cus
@@ -22,7 +22,7 @@ WHERE length(orderID)= 6
 AND orderID<> 'Order ID';
 
 
---Which product was the cheapest one sold in January, and what was the price?
+--4. Which product was the cheapest one sold in January, and what was the price?
 SELECT product, min(price)
 FROM BIT_DB.JanSales
 group by product, price
@@ -36,13 +36,13 @@ WHERE  price in (SELECT min(price) FROM BIT_DB.JanSales);
  
 
 
---What is the total revenue for each product sold in January? (Revenue can be calculated using the number of products sold and the price of the products).
+--5. What is the total revenue for each product sold in January? (Revenue can be calculated using the number of products sold and the price of the products).
 SELECT SUM( quantity)*price as revenue, product  
 FROM BIT_DB.JanSales
 group by product;
 
 
---Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
+--6. Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
 
 SELECT sum(quantity)* Price as revenue, sum(quantity), product  
 FROM BIT_DB.FebSales
@@ -50,7 +50,7 @@ where location = '548 Lincoln St, Seattle, WA 98101'
 group by product; 
 
 
---How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
+--7. How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
 
 select count(distinct c.acctnum), avg(f. quantity*f.price)
 from BIT_DB.customers c
